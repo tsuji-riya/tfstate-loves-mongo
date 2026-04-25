@@ -13,7 +13,7 @@ async function run(): Promise<void> {
   if (isStoredTfStateEmpty) {
     core.info("😼 No stored tfstate found in state.");
   }
-  const storedTfState = isStoredTfStateEmpty ? JSON.parse(rawStoredTfState) : {};
+  const storedTfState = isStoredTfStateEmpty ? {} :JSON.parse(rawStoredTfState);
 
   core.info("😼 Reading tfstate from destination");
   const rawCurrentlyTfState = fs.readFileSync(destination, "utf8");
