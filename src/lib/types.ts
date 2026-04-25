@@ -11,7 +11,3 @@ export type CurrentlyCollection = {
   date: Date;
   content: TFState,
 }
-
-export type SavedState = {
-  inputs: ActionInputs;
-}

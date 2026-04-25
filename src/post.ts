@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import {getInputs} from "./lib/input";
-import {MongoClient, ObjectId} from "mongodb";
-import type {CurrentlyCollection, TFState} from "./lib/types";
+import {MongoClient} from "mongodb";
+import type {CurrentlyCollection} from "./lib/types";
 import * as fs from "node:fs";
 
 async function run(): Promise<void> {

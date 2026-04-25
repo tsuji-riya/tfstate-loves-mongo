@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import type {ActionInputs, CurrentlyCollection, SavedState} from './lib/types';
+import type {CurrentlyCollection} from './lib/types';
 import {MongoClient} from "mongodb";
 import * as fs from "node:fs";
 import {getInputs} from "./lib/input";
