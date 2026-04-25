@@ -1,0 +1,29 @@
+name: tfstate loves mongo
+description: Manage .tffile with MongoDB
+author: Tsuji Riya
+
+inputs:
+  mongo-uri:
+    description: MongoDB URI (e.g., mongodb+srv://
+    required: true
+  database:
+    description: Database name for storing tfstate
+    required: false
+    default: tfstate
+  collection:
+    description: Collection name for storing tfstate
+    required: false
+    default: currently
+  destination:
+    description: "Destination path for .tffile (default: ./terraform.tfstate)"
+    required: false
+    default: ./terraform.tfstate
+
+runs:
+  using: node24
+  main: dist/main.js
+  post: dist/post.js
+
+branding:
+  icon: cloud-lightning
+  color: green
