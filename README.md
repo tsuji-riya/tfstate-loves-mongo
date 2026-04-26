@@ -86,7 +86,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Manage tfstate with MongoDB
-        uses: your-username/tfstate-loves-mongo@v1
+        uses: tsuji-riya/tfstate-loves-mongo@v1
         with:
           mongo-uri: ${{ secrets.MONGO_URI }}
 
