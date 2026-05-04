@@ -28,12 +28,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Change version in package.json
+        run: |
+          sed -i 's/"version": "[^"]*"/"version": "${{ inputs.version }}"/' package.json
+
       - name: "Commit and push dist/"
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
           git add -f dist/
-          git diff --staged --quiet && echo "No changes in dist/" || \
+          git diff --staged --quiet && echo "No changes in package.json or dist/" || \
           git commit -m "Before Release: build dist for v${{ inputs.version }}"
           git push
 
