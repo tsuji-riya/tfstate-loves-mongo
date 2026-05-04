@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "build": "tsdown",
     "typecheck": "tsc --noEmit",
     "restore": "tsx src/entry/common.ts restore",

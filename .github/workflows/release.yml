@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'リリースバージョン (例: 1.2.0)'
+        description: "リリースバージョン (例: 1.2.0)"
         required: true
         type: string
 

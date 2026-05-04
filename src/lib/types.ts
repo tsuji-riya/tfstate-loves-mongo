@@ -1,11 +1,11 @@
-import type {Logger} from "./log";
+import type { Logger } from "./log";
 
 export type TFState = any;
 
 export type CurrentlyCollection = {
   date: Date;
-  content: TFState,
-}
+  content: TFState;
+};
 
 export type FlowOptions = {
   logger: Logger;
@@ -13,4 +13,4 @@ export type FlowOptions = {
   database: string;
   collection: string;
   destination: string;
-}
+};

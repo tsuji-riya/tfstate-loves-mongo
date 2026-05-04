@@ -1,8 +1,14 @@
-import type {CurrentlyCollection, FlowOptions} from "../lib/types";
-import {MongoClient} from "mongodb";
+import type { CurrentlyCollection, FlowOptions } from "../lib/types";
+import { MongoClient } from "mongodb";
 import * as fs from "node:fs";
 
-export async function restore({logger, mongoUri, database, collection, destination}: FlowOptions) {
+export async function restore({
+  logger,
+  mongoUri,
+  database,
+  collection,
+  destination,
+}: FlowOptions) {
   const mongoClient = new MongoClient(mongoUri);
 
   logger.info("😼 Connecting to MongoDB...");
@@ -11,7 +17,7 @@ export async function restore({logger, mongoUri, database, collection, destinati
 
   logger.info("😼 Fetching tfstate from MongoDB...");
   const currentlyCollection = mongoClient.db(database).collection<CurrentlyCollection>(collection);
-  const storedTfState = await currentlyCollection.findOne({}, {sort: {date: -1}});
+  const storedTfState = await currentlyCollection.findOne({}, { sort: { date: -1 } });
   logger.info(`😽 Fetched tfstate successfully!`);
 
   if (!storedTfState) {

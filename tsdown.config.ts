@@ -1,4 +1,4 @@
-import {defineConfig} from "tsdown";
+import { defineConfig } from "tsdown";
 
 export default defineConfig({
   entry: ["./src/entry/actions/main.ts", "./src/entry/actions/post.ts"],
@@ -9,6 +9,6 @@ export default defineConfig({
   fixedExtension: false,
   clean: true,
   deps: {
-    alwaysBundle: ["*", "*/**"]
+    alwaysBundle: ["*", "*/**"],
   },
-})
+});
