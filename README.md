@@ -33,9 +33,9 @@ steps:
     uses: tsuji-riya/tfstate-loves-mongo@v1
     with:
       mongo-uri: ${{ secrets.MONGO_URI }}
-      database: tfstate          # optional, default: "tfstate"
-      collection: currently      # optional, default: "currently"
-      destination: ./terraform.tfstate  # optional
+      database: tfstate # optional, default: "tfstate"
+      collection: currently # optional, default: "currently"
+      destination: ./terraform.tfstate # optional
 ```
 
 > **Tip:** Always store your MongoDB URI in a GitHub Actions secret — never hard-code it in your workflow file.
@@ -44,12 +44,12 @@ steps:
 
 ## Inputs
 
-| Input | Description | Required | Default |
-|---|---|---|---|
-| `mongo-uri` | MongoDB connection string (e.g. `mongodb+srv://...`) | ✅ Yes | — |
-| `database` | Database name for storing tfstate | No | `tfstate` |
-| `collection` | Collection name for storing tfstate | No | `currently` |
-| `destination` | Local path where the `.tfstate` file will be read/written | No | `./terraform.tfstate` |
+| Input         | Description                                               | Required | Default               |
+| ------------- | --------------------------------------------------------- | -------- | --------------------- |
+| `mongo-uri`   | MongoDB connection string (e.g. `mongodb+srv://...`)      | ✅ Yes   | —                     |
+| `database`    | Database name for storing tfstate                         | No       | `tfstate`             |
+| `collection`  | Collection name for storing tfstate                       | No       | `currently`           |
+| `destination` | Local path where the `.tfstate` file will be read/written | No       | `./terraform.tfstate` |
 
 ---
 
@@ -61,7 +61,9 @@ Each snapshot stored in MongoDB has the following shape:
 {
   "_id": "<ObjectId>",
   "date": "<ISODate>",
-  "content": { /* full Terraform state object */ }
+  "content": {
+    /* full Terraform state object */
+  }
 }
 ```
 
