@@ -32,7 +32,7 @@ switch (positionals[2]) {
       break;
     }
     if (!database) {
-      logger.warn("---database is missing");
+      logger.warn("--database is missing");
       break;
     }
 
