@@ -1,0 +1,2 @@
+#!/usr/bin/env node
+import{i as e,n as t,o as n}from"./lib-CITdHZ-b.js";function r(){let r=e(`mongo-uri`,{required:!0});return n(r),{logger:t(),mongoUri:r,database:e(`database`),collection:e(`collection`),destination:e(`destination`)}}export{r as t};

@@ -1,6 +1,6 @@
 {
   "name": "tfstate-loves-mongo",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Manage tfstate file with MongoDB",
   "author": "tsuji-riya",
   "repository": {
