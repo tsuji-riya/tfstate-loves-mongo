@@ -7,14 +7,20 @@
     "type": "git",
     "url": "https://github.com/tsuji-riya/tfstate-loves-mongo.git"
   },
+  "bin": {
+    "tfstate-loves-mongo": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "build": "tsdown",
     "typecheck": "tsc --noEmit",
-    "restore": "tsx src/entry/common.ts restore",
-    "save": "tsx src/entry/common.ts save"
+    "restore": "tsx src/entry/cli.ts restore",
+    "save": "tsx src/entry/cli.ts save"
   },
   "dependencies": {
     "@actions/core": "^3.0.1",

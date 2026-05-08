@@ -53,21 +53,22 @@ async function main() {
   });
   const logger = instanceCommonLogger();
 
-  const validateResult = validateRequiredFlags(logger, values);
-  if (!validateResult) return;
+  const command = positionals[2];
 
-  const { uri, database, collection, file } = validateResult;
+  if (command === "restore") {
+    const validateResult = validateRequiredFlags(logger, values);
+    if (!validateResult) return;
 
-  switch (positionals[2]) {
-    case "restore":
-      await restore({ logger, mongoUri: uri, collection, database, destination: file });
-      break;
-    case "save":
-      await save({ logger, mongoUri: uri, collection, database, destination: file });
-      break;
-    default:
-      logger.warn("npm run <restore/save> <options>");
-      break;
+    const { uri, database, collection, file } = validateResult;
+    await restore({ logger, mongoUri: uri, collection, database, destination: file });
+  } else if (command === "save") {
+    const validateResult = validateRequiredFlags(logger, values);
+    if (!validateResult) return;
+
+    const { uri, database, collection, file } = validateResult;
+    await save({ logger, mongoUri: uri, collection, database, destination: file });
+  } else {
+    logger.warn("You should run like <command> <restore/save> <options>");
   }
 }
 
