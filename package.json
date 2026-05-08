@@ -1,13 +1,13 @@
 {
   "name": "tfstate-loves-mongo",
-  "description": "Manage tfstate file with MongoDB",
   "version": "1.2.0",
-  "type": "module",
+  "description": "Manage tfstate file with MongoDB",
   "author": "tsuji-riya",
   "repository": {
     "type": "git",
     "url": "https://github.com/tsuji-riya/tfstate-loves-mongo.git"
   },
+  "type": "module",
   "scripts": {
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
