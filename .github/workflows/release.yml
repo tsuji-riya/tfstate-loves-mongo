@@ -9,7 +9,7 @@ on:
         type: string
 
 jobs:
-  build:
+  before-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -42,6 +42,17 @@ jobs:
           git commit -m "Before Release: build dist for v${{ inputs.version }}"
           git push
 
+  release:
+    needs: before-release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
       - name: Create tag
         run: |
           git tag "v${{ inputs.version }}"
@@ -53,3 +64,23 @@ jobs:
           tag_name: v${{ inputs.version }}
           name: v${{ inputs.version }}
           generate_release_notes: true
+
+  publish-npm:
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Publish to NPM
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
